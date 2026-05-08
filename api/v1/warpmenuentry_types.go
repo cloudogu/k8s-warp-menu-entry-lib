@@ -23,16 +23,25 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
+// DisplayName defines a display name for the WarpMenuEntry.
+type DisplayName struct {
+	// DE is the display name for the WarpMenuEntry in German.
+	// +kubebuilder:validation:Required
+	// +kubebuilder:validation:MinLength=1
+	DE string `json:"de"`
+
+	// EN is the display name for the WarpMenuEntry in English.
+	// +kubebuilder:validation:Required
+	// +kubebuilder:validation:MinLength=1
+	EN string `json:"en"`
+}
+
 // WarpMenuEntrySpec defines the desired state of WarpMenuEntry
 type WarpMenuEntrySpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-	// The following markers will use OpenAPI v3 schema to validate the value
-	// More info: https://book.kubebuilder.io/reference/markers/crd-validation.html
 
-	// foo is an example field of WarpMenuEntry. Edit warpmenuentry_types.go to remove/update
-	// +optional
-	Foo *string `json:"foo,omitempty"`
+	// DisplayName defines the name to display for this WarpMenuEntry.
+	// +required
+	DisplayName *DisplayName `json:"displayName"`
 }
 
 // WarpMenuEntryStatus defines the observed state of WarpMenuEntry.
@@ -58,8 +67,10 @@ type WarpMenuEntryStatus struct {
 	Conditions []metav1.Condition `json:"conditions,omitempty"`
 }
 
+// +genclient
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="DisplayName",type="string",JSONPath=".spec.displayName.de",description="The display name of the Warp Menu Entry"
 
 // WarpMenuEntry is the Schema for the warpmenuentries API
 type WarpMenuEntry struct {
