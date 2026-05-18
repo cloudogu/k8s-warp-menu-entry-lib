@@ -55,7 +55,7 @@ type WarpMenuEntrySpec struct {
 	// +optional
 	Category string `json:"category"`
 
-	// Path is the URL path under which the application should be reachable.
+	// Path is the URL path under which the application should be reachable for this WarpMenuEntry.
 	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:Pattern=^/.*$
@@ -91,10 +91,11 @@ type WarpMenuEntryStatus struct {
 
 // +genclient
 // +kubebuilder:object:root=true
-// +kubebuilder:subresource:status
 // +kubebuilder:resource:shortName=warpentry
+// +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Ready",type="string",JSONPath=".status.conditions[?(@.type == 'Ready')].status",description="Warp menu entry has been rendered successfully."
 // +kubebuilder:printcolumn:name="DisplayName",type="string",JSONPath=".spec.displayName.de",description="The display name of the Warp Menu Entry"
+// +kubebuilder:printcolumn:name="Path",type="string",JSONPath=".spec.path",description="The URL path under which the application should be reachable for the Warp Menu Entry"
 
 // WarpMenuEntry is the Schema for the warpmenuentries API
 type WarpMenuEntry struct {

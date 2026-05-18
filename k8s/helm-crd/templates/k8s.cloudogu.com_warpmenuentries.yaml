@@ -28,6 +28,10 @@ spec:
           jsonPath: .spec.displayName.de
           name: DisplayName
           type: string
+        - description: The URL path under which the application should be reachable for the Warp Menu Entry
+          jsonPath: .spec.path
+          name: Path
+          type: string
       name: v1
       schema:
         openAPIV3Schema:
@@ -76,7 +80,7 @@ spec:
                     - en
                   type: object
                 path:
-                  description: Path is the URL path under which the application should be reachable.
+                  description: Path is the URL path under which the application should be reachable for this WarpMenuEntry.
                   minLength: 1
                   pattern: ^/.*$
                   type: string
