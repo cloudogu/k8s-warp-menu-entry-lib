@@ -20,6 +20,13 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+const (
+	// ConditionReady indicates that the warp menu entry has been rendered successfully.
+	ConditionReady = "Ready"
+	// ReasonEntryRendered indicates that the warp menu entry has been rendered successfully.
+	ReasonEntryRendered = "EntryRendered"
+)
+
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
@@ -42,6 +49,21 @@ type WarpMenuEntrySpec struct {
 	// DisplayName defines the name to display for this WarpMenuEntry.
 	// +required
 	DisplayName *DisplayName `json:"displayName"`
+
+	// DisplayName defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+	// +kubebuilder:validation:MinLength=1
+	// +optional
+	Category string `json:"category"`
+
+	// Path is the URL path under which the application should be reachable.
+	// +kubebuilder:validation:Required
+	// +kubebuilder:validation:MinLength=1
+	// +kubebuilder:validation:Pattern=^/.*$
+	Path string `json:"path"`
+
+	// Disabled flag suppresses the display of the WarpMenuEntry in Warp-Menü if true
+	// +optional
+	Disabled bool `json:"disabled"`
 }
 
 // WarpMenuEntryStatus defines the observed state of WarpMenuEntry.
@@ -70,6 +92,8 @@ type WarpMenuEntryStatus struct {
 // +genclient
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
+// +kubebuilder:resource:shortName=warpentry
+// +kubebuilder:printcolumn:name="Ready",type="string",JSONPath=".status.conditions[?(@.type == 'Ready')].status",description="Warp menu entry has been rendered successfully."
 // +kubebuilder:printcolumn:name="DisplayName",type="string",JSONPath=".spec.displayName.de",description="The display name of the Warp Menu Entry"
 
 // WarpMenuEntry is the Schema for the warpmenuentries API

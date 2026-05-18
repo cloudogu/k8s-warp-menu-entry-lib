@@ -14,10 +14,16 @@ spec:
     kind: WarpMenuEntry
     listKind: WarpMenuEntryList
     plural: warpmenuentries
+    shortNames:
+      - warpentry
     singular: warpmenuentry
   scope: Namespaced
   versions:
     - additionalPrinterColumns:
+        - description: Warp menu entry has been rendered successfully.
+          jsonPath: .status.conditions[?(@.type == 'Ready')].status
+          name: Ready
+          type: string
         - description: The display name of the Warp Menu Entry
           jsonPath: .spec.displayName.de
           name: DisplayName
@@ -47,6 +53,13 @@ spec:
             spec:
               description: spec defines the desired state of WarpMenuEntry
               properties:
+                category:
+                  description: DisplayName defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+                  minLength: 1
+                  type: string
+                disabled:
+                  description: Disabled flag suppresses the display of the WarpMenuEntry in Warp-Menü if true
+                  type: boolean
                 displayName:
                   description: DisplayName defines the name to display for this WarpMenuEntry.
                   properties:
@@ -62,8 +75,14 @@ spec:
                     - de
                     - en
                   type: object
+                path:
+                  description: Path is the URL path under which the application should be reachable.
+                  minLength: 1
+                  pattern: ^/.*$
+                  type: string
               required:
                 - displayName
+                - path
               type: object
             status:
               description: status defines the observed state of WarpMenuEntry
