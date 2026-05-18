@@ -1,6 +1,6 @@
 # Set these to the desired values
 PROJECT_NAME=k8s-warp-menu-entry-lib
-ARTIFACT_ID=k8s-warp-menu-entry-crd
+ARTIFACT_ID=k8s-warp-menu-entry-lib
 APPEND_CRD_SUFFIX=false
 VERSION=0.0.1
 
@@ -51,7 +51,6 @@ ${CLIENT_GEN}: $(UTILITY_BIN_PATH)
 .PHONY: generate-client
 generate-client: ${CLIENT_GEN} ## Generate client code from API definitions.
 	@echo "Generating client..."
-	@echo "Manojmanoj: ${CURDIR}"
 	@$(CLIENT_GEN) -v 5 \
 		--output-dir "./" \
 		--output-pkg "github.com/cloudogu/${PROJECT_NAME}" \
@@ -62,12 +61,3 @@ generate-client: ${CLIENT_GEN} ## Generate client code from API definitions.
 .PHONY: generate-crd-api
 generate-crd-api: generate-deepcopy generate-client manifests
 	@echo "generated deepcopy, api-client and manifests"
-
-# Override make target to use k8s-warp-menu-entry-lib as label
-.PHONY: crd-add-labels
-crd-add-labels: $(BINARY_YQ)
-	@echo "Adding labels to CRD..."
-	@for file in ${HELM_CRD_SOURCE_DIR}/templates/*.yaml ; do \
-		$(BINARY_YQ) -i e ".metadata.labels.app = \"ces\"" $${file} ;\
-		$(BINARY_YQ) -i e ".metadata.labels.\"app.kubernetes.io/name\" = \"${PROJECT_NAME}\"" $${file} ;\
-	done
