@@ -75,7 +75,7 @@ func setConfigDefaults(config *rest.Config) {
 	}
 }
 
-// RESTClient retugo mod tidyrns a RESTClient that is used to communicate
+// RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *ApiV1Client) RESTClient() rest.Interface {
 	if c == nil {

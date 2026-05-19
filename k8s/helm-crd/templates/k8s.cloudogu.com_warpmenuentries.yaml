@@ -15,11 +15,24 @@ spec:
     listKind: WarpMenuEntryList
     plural: warpmenuentries
     shortNames:
-      - exp
+      - warp
     singular: warpmenuentry
   scope: Namespaced
   versions:
-    - name: v1
+    - additionalPrinterColumns:
+        - description: Warp menu entry has been rendered successfully.
+          jsonPath: .status.conditions[?(@.type == 'Ready')].status
+          name: Ready
+          type: string
+        - description: The URL path under which the application should be reachable for the Warp Menu Entry
+          jsonPath: .spec.path
+          name: Path
+          type: string
+        - description: The age of the resource
+          jsonPath: .metadata.creationTimestamp
+          name: Age
+          type: date
+      name: v1
       schema:
         openAPIV3Schema:
           description: WarpMenuEntry is the Schema for the warpmenuentries API
@@ -44,9 +57,38 @@ spec:
             spec:
               description: spec defines the desired state of WarpMenuEntry
               properties:
-                foo:
-                  description: foo is an example field of WarpMenuEntry. Edit warpmenuentry_types.go to remove/update
+                category:
+                  description: DisplayName defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+                  maxLength: 253
+                  minLength: 1
                   type: string
+                disabled:
+                  description: Disabled flag suppresses the display of the WarpMenuEntry in Warp-Menü if true
+                  type: boolean
+                displayName:
+                  description: DisplayName defines the name to display for this WarpMenuEntry.
+                  minProperties: 1
+                  properties:
+                    de:
+                      description: DE is the display name for the WarpMenuEntry in German.
+                      maxLength: 253
+                      minLength: 1
+                      type: string
+                    en:
+                      description: EN is the display name for the WarpMenuEntry in English.
+                      maxLength: 253
+                      minLength: 1
+                      type: string
+                  type: object
+                path:
+                  description: Path is the URL path under which the application should be reachable for this WarpMenuEntry.
+                  minLength: 1
+                  pattern: ^/.*$
+                  type: string
+              required:
+                - category
+                - displayName
+                - path
               type: object
             status:
               description: status defines the observed state of WarpMenuEntry
