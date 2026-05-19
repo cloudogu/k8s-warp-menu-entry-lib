@@ -7,7 +7,7 @@ metadata:
   name: warpmenuentries.k8s.cloudogu.com
   labels:
     app: ces
-    app.kubernetes.io/name: k8s-warp-menu-entry-lib
+    app.kubernetes.io/name: k8s-warp-menu-entry-crd
 spec:
   group: k8s.cloudogu.com
   names:
@@ -58,8 +58,8 @@ spec:
               description: spec defines the desired state of WarpMenuEntry
               properties:
                 category:
-                  description: DisplayName defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
-                  maxLength: 253
+                  description: Category defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+                  maxLength: 50
                   minLength: 1
                   type: string
                 disabled:
@@ -67,18 +67,20 @@ spec:
                   type: boolean
                 displayName:
                   description: DisplayName defines the name to display for this WarpMenuEntry.
-                  minProperties: 1
                   properties:
                     de:
                       description: de is the display name for the WarpMenuEntry in German.
-                      maxLength: 253
+                      maxLength: 50
                       minLength: 1
                       type: string
                     en:
                       description: en is the display name for the WarpMenuEntry in English.
-                      maxLength: 253
+                      maxLength: 50
                       minLength: 1
                       type: string
+                  required:
+                    - de
+                    - en
                   type: object
                 path:
                   description: Path is the URL path under which the application should be reachable for this WarpMenuEntry.

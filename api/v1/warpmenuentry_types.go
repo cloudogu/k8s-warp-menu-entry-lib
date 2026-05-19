@@ -15,20 +15,18 @@ const (
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
 // DisplayName defines a display name for the WarpMenuEntry.
-
-// +kubebuilder:validation:MinProperties=1
 type DisplayName struct {
 	// de is the display name for the WarpMenuEntry in German.
-	// +kubebuilder:validation:Optional
+	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:MinLength=1
-	// +kubebuilder:validation:MaxLength=253
-	DE string `json:"de,omitzero"`
+	// +kubebuilder:validation:MaxLength=50
+	DE string `json:"de"`
 
 	// en is the display name for the WarpMenuEntry in English.
-	// +kubebuilder:validation:Optional
+	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:MinLength=1
-	// +kubebuilder:validation:MaxLength=253
-	EN string `json:"en,omitzero"`
+	// +kubebuilder:validation:MaxLength=50
+	EN string `json:"en"`
 }
 
 // WarpMenuEntrySpec defines the desired state of WarpMenuEntry
@@ -38,10 +36,10 @@ type WarpMenuEntrySpec struct {
 	// +required
 	DisplayName *DisplayName `json:"displayName"`
 
-	// DisplayName defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+	// Category defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
 	// +required
 	// +kubebuilder:validation:MinLength=1
-	// +kubebuilder:validation:MaxLength=253
+	// +kubebuilder:validation:MaxLength=50
 	Category string `json:"category"`
 
 	// Path is the URL path under which the application should be reachable for this WarpMenuEntry.

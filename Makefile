@@ -59,12 +59,3 @@ generate-client: ${CLIENT_GEN} ## Generate client code from API definitions.
 .PHONY: generate-crd-api
 generate-crd-api: generate-deepcopy generate-client manifests
 	@echo "generated deepcopy, api-client and manifests"
-
-# Override make target to use k8s-exposition-lib as label
-.PHONY: crd-add-labels
-crd-add-labels: $(BINARY_YQ)
-	@echo "Adding labels to CRD..."
-	@for file in ${HELM_CRD_SOURCE_DIR}/templates/*.yaml ; do \
-		$(BINARY_YQ) -i e ".metadata.labels.app = \"ces\"" $${file} ;\
-		$(BINARY_YQ) -i e ".metadata.labels.\"app.kubernetes.io/name\" = \"${PROJECT_NAME}\"" $${file} ;\
-	done
