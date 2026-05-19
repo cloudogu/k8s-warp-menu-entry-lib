@@ -34,13 +34,13 @@ const (
 
 // +kubebuilder:validation:MinProperties=1
 type DisplayName struct {
-	// DE is the display name for the WarpMenuEntry in German.
+	// de is the display name for the WarpMenuEntry in German.
 	// +kubebuilder:validation:Optional
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:MaxLength=253
 	DE string `json:"de,omitzero"`
 
-	// EN is the display name for the WarpMenuEntry in English.
+	// en is the display name for the WarpMenuEntry in English.
 	// +kubebuilder:validation:Optional
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:MaxLength=253

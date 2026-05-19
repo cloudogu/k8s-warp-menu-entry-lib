@@ -70,12 +70,12 @@ spec:
                   minProperties: 1
                   properties:
                     de:
-                      description: DE is the display name for the WarpMenuEntry in German.
+                      description: de is the display name for the WarpMenuEntry in German.
                       maxLength: 253
                       minLength: 1
                       type: string
                     en:
-                      description: EN is the display name for the WarpMenuEntry in English.
+                      description: en is the display name for the WarpMenuEntry in English.
                       maxLength: 253
                       minLength: 1
                       type: string
