@@ -52,7 +52,7 @@ type WarpMenuEntrySpec struct {
 
 	// Disabled flag suppresses the display of the WarpMenuEntry in Warp-Menü if true
 	// +optional
-	Disabled bool `json:"disabled"`
+	Disabled bool `json:"disabled,omitempty"`
 }
 
 // WarpMenuEntryStatus defines the observed state of WarpMenuEntry.
