@@ -46,7 +46,7 @@ spec:
           priority: 1
           type: string
         - description: Display name in German for the Warp Menu Entry
-          jsonPath: .spec.displayName.en
+          jsonPath: .spec.displayName.de
           name: DisplayName German
           priority: 1
           type: string

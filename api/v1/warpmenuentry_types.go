@@ -76,7 +76,7 @@ type WarpMenuEntryStatus struct {
 // +kubebuilder:printcolumn:name="Category",type="string",JSONPath=".spec.category",description="Category for the Warp Menu Entry"
 // +kubebuilder:printcolumn:name="Disabled",type="string",JSONPath=".spec.disabled",description="Is the Warp Menu Entry disabled"
 // +kubebuilder:printcolumn:name="DisplayName English",type="string",JSONPath=".spec.displayName.en",description="Display name in English for the Warp Menu Entry",priority=1
-// +kubebuilder:printcolumn:name="DisplayName German",type="string",JSONPath=".spec.displayName.en",description="Display name in German for the Warp Menu Entry",priority=1
+// +kubebuilder:printcolumn:name="DisplayName German",type="string",JSONPath=".spec.displayName.de",description="Display name in German for the Warp Menu Entry",priority=1
 
 // WarpMenuEntry is the Schema for the warpmenuentries API
 type WarpMenuEntry struct {
