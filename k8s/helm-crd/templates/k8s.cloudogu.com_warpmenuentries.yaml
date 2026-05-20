@@ -32,6 +32,24 @@ spec:
           jsonPath: .metadata.creationTimestamp
           name: Age
           type: date
+        - description: Category for the Warp Menu Entry
+          jsonPath: .spec.category
+          name: Category
+          type: string
+        - description: Is the Warp Menu Entry disabled
+          jsonPath: .spec.disabled
+          name: Disabled
+          type: string
+        - description: Display name in English for the Warp Menu Entry
+          jsonPath: .spec.displayName.en
+          name: DisplayName English
+          priority: 1
+          type: string
+        - description: Display name in German for the Warp Menu Entry
+          jsonPath: .spec.displayName.en
+          name: DisplayName German
+          priority: 1
+          type: string
       name: v1
       schema:
         openAPIV3Schema:

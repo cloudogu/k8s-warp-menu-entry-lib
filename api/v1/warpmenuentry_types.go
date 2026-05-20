@@ -72,6 +72,10 @@ type WarpMenuEntryStatus struct {
 // +kubebuilder:printcolumn:name="Ready",type="string",JSONPath=".status.conditions[?(@.type == 'Ready')].status",description="Warp menu entry has been rendered successfully."
 // +kubebuilder:printcolumn:name="Path",type="string",JSONPath=".spec.path",description="The URL path under which the application should be reachable for the Warp Menu Entry"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp",description="The age of the resource"
+// +kubebuilder:printcolumn:name="Category",type="string",JSONPath=".spec.category",description="Category for the Warp Menu Entry"
+// +kubebuilder:printcolumn:name="Disabled",type="string",JSONPath=".spec.disabled",description="Is the Warp Menu Entry disabled"
+// +kubebuilder:printcolumn:name="DisplayName English",type="string",JSONPath=".spec.displayName.en",description="Display name in English for the Warp Menu Entry",priority=1
+// +kubebuilder:printcolumn:name="DisplayName German",type="string",JSONPath=".spec.displayName.en",description="Display name in German for the Warp Menu Entry",priority=1
 
 // WarpMenuEntry is the Schema for the warpmenuentries API
 type WarpMenuEntry struct {
