@@ -76,12 +76,14 @@ spec:
               description: spec defines the desired state of WarpMenuEntry
               properties:
                 category:
-                  description: Category defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+                  description: |-
+                    Category defines the key of the category under which to place the entry in the Warp Menu. Should preferably be
+                    one of the pre-defined categories, but any missing category is created on the fly using the key as its name.
                   maxLength: 50
                   minLength: 1
                   type: string
                 disabled:
-                  description: Disabled flag suppresses the display of the WarpMenuEntry in Warp-Menü if true
+                  description: Disabled flag suppresses the display of the WarpMenuEntry in the Warp Menu if true
                   type: boolean
                 displayName:
                   description: DisplayName defines the name to display for this WarpMenuEntry.
@@ -101,7 +103,9 @@ spec:
                     - en
                   type: object
                 path:
-                  description: Path is the URL path under which the application should be reachable for this WarpMenuEntry.
+                  description: |-
+                    Path is the URL path to which the WarpMenuEntry should point.
+                    Note that this must not include a domain or protocol.
                   minLength: 1
                   pattern: ^/.*$
                   type: string

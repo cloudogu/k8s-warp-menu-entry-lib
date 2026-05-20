@@ -5,16 +5,15 @@ import (
 )
 
 const (
-	// ConditionReady indicates that the warp menu entry has been rendered successfully.
+	// ConditionReady indicates that the warp menu entry has been processed successfully.
 	ConditionReady = "Ready"
 	// ReasonEntryRendered indicates that the warp menu entry has been rendered successfully.
 	ReasonEntryRendered = "EntryRendered"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
-// DisplayName defines a display name for the WarpMenuEntry.
+// DisplayName defines a language-dependant display name for the WarpMenuEntry.
+// Currently, we have mandatory localized versions for German and English, but
+// more (optional) languages might be added in the future.
 type DisplayName struct {
 	// de is the display name for the WarpMenuEntry in German.
 	// +kubebuilder:validation:Required
@@ -34,21 +33,23 @@ type WarpMenuEntrySpec struct {
 
 	// DisplayName defines the name to display for this WarpMenuEntry.
 	// +required
-	DisplayName *DisplayName `json:"displayName"`
+	DisplayName DisplayName `json:"displayName"`
 
-	// Category defines the categorie-Key in Warp-Menü for this WarpMenuEntry.
+	// Category defines the key of the category under which to place the entry in the Warp Menu. Should preferably be
+	// one of the pre-defined categories, but any missing category is created on the fly using the key as its name.
 	// +required
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:MaxLength=50
 	Category string `json:"category"`
 
-	// Path is the URL path under which the application should be reachable for this WarpMenuEntry.
+	// Path is the URL path to which the WarpMenuEntry should point.
+	// Note that this must not include a domain or protocol.
 	// +required
 	// +kubebuilder:validation:MinLength=1
 	// +kubebuilder:validation:Pattern=^/.*$
 	Path string `json:"path"`
 
-	// Disabled flag suppresses the display of the WarpMenuEntry in Warp-Menü if true
+	// Disabled flag suppresses the display of the WarpMenuEntry in the Warp Menu if true
 	// +optional
 	Disabled bool `json:"disabled,omitempty"`
 }
