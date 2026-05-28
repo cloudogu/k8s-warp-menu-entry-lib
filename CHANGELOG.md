@@ -7,4 +7,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial definition for the WarpMenuEntry-CR.
+- [#1] Initial definition for the WarpMenuEntry-CR.

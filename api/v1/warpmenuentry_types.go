@@ -11,7 +11,7 @@ const (
 	ReasonEntryRendered = "EntryRendered"
 )
 
-// DisplayName defines a language-dependant display name for the WarpMenuEntry.
+// DisplayName defines a language-dependent display name for the WarpMenuEntry.
 // Currently, we have mandatory localized versions for German and English, but
 // more (optional) languages might be added in the future.
 type DisplayName struct {
