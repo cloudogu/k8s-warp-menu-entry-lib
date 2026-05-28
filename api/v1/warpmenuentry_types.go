@@ -9,6 +9,8 @@ const (
 	ConditionReady = "Ready"
 	// ReasonEntryRendered indicates that the warp menu entry has been rendered successfully.
 	ReasonEntryRendered = "EntryRendered"
+	// ReasonEntryHidden indicates that the CR has been processed, but the entry is it hidden due to its disabled state.
+	ReasonEntryHidden = "EntryHidden"
 )
 
 // DisplayName defines a language-dependent display name for the WarpMenuEntry.
