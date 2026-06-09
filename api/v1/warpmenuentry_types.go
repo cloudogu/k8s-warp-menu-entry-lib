@@ -7,9 +7,17 @@ import (
 const (
 	// ConditionReady indicates that the warp menu entry has been processed successfully.
 	ConditionReady = "Ready"
-	// ReasonEntryRendered indicates that the warp menu entry has been rendered successfully.
+	// ReasonMenuGenerated indicates that the warp menu entry has been successfully handled by menu generation
+	ReasonMenuGenerated = "MenuGenerated"
+	// ReasonMenuGenerationFailed indicates that generation of the warp menu failed when processing this entry,
+	// so its current state may not be included
+	ReasonMenuGenerationFailed = "MenuGenerationFailed"
+
+	// ConditionVisible indicates whether the warp menu entry is currently contained in the warp menu
+	ConditionVisible = "Visible"
+	// ReasonEntryRendered indicates that the warp menu entry has been integrated in the warp menu
 	ReasonEntryRendered = "EntryRendered"
-	// ReasonEntryHidden indicates that the CR has been processed, but the entry is it hidden due to its disabled state.
+	// ReasonEntryHidden indicates that the entry is not included in the warp menu due to its disabled state
 	ReasonEntryHidden = "EntryHidden"
 )
 

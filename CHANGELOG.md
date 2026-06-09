@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- [#2] New constants for Visible status condition and some reasons
+
 ## [v0.1.0] - 2026-06-02
 
 ### Added
