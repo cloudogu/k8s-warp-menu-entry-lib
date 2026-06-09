@@ -2,7 +2,7 @@
 PROJECT_NAME=k8s-warp-menu-entry-lib
 ARTIFACT_ID=k8s-warp-menu-entry-crd
 APPEND_CRD_SUFFIX=false
-VERSION=0.1.0
+VERSION=0.2.0
 
 MAKEFILES_VERSION=10.9.0
 
