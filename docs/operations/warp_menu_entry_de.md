@@ -1,5 +1,3 @@
-
-
 # WarpMenuEntry verwenden
 
 Dogu-Entwickler registrieren ihre Anwendungen im Warp-Menü, indem sie eine
