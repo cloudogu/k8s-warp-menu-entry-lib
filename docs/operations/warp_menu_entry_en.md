@@ -23,7 +23,7 @@ spec:
 |---|---|---|---|
 | `displayName.de` | yes | 1–50 characters | German display name shown in the menu. |
 | `displayName.en` | yes | 1–50 characters | English display name shown in the menu. |
-| `category` | yes | 1–50 characters | Category identifier. Use a pre-defined key from `values.yaml` or provide any new identifier to create an ad-hoc category (order will be 9999). |
+| `category` | yes | 1–50 characters | The category under which the entry appears in the Warp menu. If the category is newly created, it will appear at the end of the Warp menu. | 
 | `path` | yes | starts with `/` | Server-relative URL path, e.g. `/my-dogu`. Must not include a domain or scheme. |
 | `disabled` | no | boolean | When `true`, the entry is hidden from the menu without deleting the resource. Defaults to `false`. |
 
